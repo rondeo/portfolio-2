@@ -4,7 +4,8 @@ const hbs = require('hbs');
 var app = express();
 
 app.set('view engine','hbs');
-app.use(express.static(__dirname + '/public'));
+
+app.use('/public',express.static('public'));
 
 
 app.get('/', (req,res) =>{
@@ -15,12 +16,11 @@ app.get('/', (req,res) =>{
 
 app.get('*', (req,res) =>{
 
-    res.send('404');
+    res.render('404.hbs');
     
 });
 
 app.listen(3000, ()=> {
 
     console.log('App is listening to port 3000');
-
 });
